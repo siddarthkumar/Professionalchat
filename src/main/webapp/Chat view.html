@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Chat View</title>
+	<script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+	<style type="text/css">
+		.div1{
+			width: 500px;
+			height: 500px;
+			background: #aaa;
+
+			overflow-y: scroll;
+		}
+
+		button{
+			margin-top: 10px;
+			width: 100px;
+			height: 30px;
+		}
+		.send{
+			margin-left: 150px;
+		}
+		.recever{
+			margin-left: -30px;
+		}
+
+		.content1{
+			width: 460px;
+			min-height: 20px;
+			float: right;
+			margin: 2px;
+			margin-left: 150px;
+		}
+
+		.content2{
+			width: 460px;
+			min-height: 20px;
+			float: left;
+			margin: 2px;
+			margin-right: 150px;
+		}
+		.content1_1{
+			max-width: 350px;
+			background: #9bff68;
+			text-align: left;
+			float: right;
+			padding: 5px;
+			border-radius: 7px;
+		}
+
+		.content2_2{
+			max-width: 350px;
+			background: #fff;
+			text-align: left;
+			float: left;
+			padding: 5px;
+			border-radius: 7px;
+
+		}
+
+		.textarea{
+			width: 494px;
+			height: 50px;
+		}
+	</style>
+
+	<script type="text/javascript">
+		$(document).on("click" , ".send",function(){
+			textarea_value = $('.textarea').val();
+			textarea_value = `<div class='content1'><div class="content1_1">${textarea_value}</div></div>`;
+			var div1_html = $(".div1").html();
+			$(textarea_value).appendTo(".div1");
+			$('.textarea').val("");
+
+			// scroll the div
+			var objDiv = $(".div1");
+ 		   	var h = objDiv.get(0).scrollHeight;
+    		objDiv.animate({scrollTop: h});
+		})
+
+		$(document).on("click" , ".recever",function(){
+			textarea_value = $('.textarea').val();
+			textarea_value = `<div class='content2'><div class="content2_2">${textarea_value}</div></div>`;
+			var div1_html = $(".div1").html();
+			$(textarea_value).appendTo(".div1");
+			$('.textarea').val("");
+
+			// scroll the div
+			var objDiv = $(".div1");
+    	 	var h = objDiv.get(0).scrollHeight;
+    	 	objDiv.animate({scrollTop: h});
+		})
+
+	</script>
+
+</head>
+<body>
+	<center>
+		<div id="message" class="div1" >
+			<div class="content1"><div class="content1_1">my  datamy data</div></div>
+
+			<div class="content2"><div class="content2_2">my data datamy data</div></div>
+		</div>
+
+		<textarea class="textarea"></textarea><br>
+		<button class="recever" >frnd</button>
+		<button class="send">me</button>
+
+	</center>
+</body>
+</html>
